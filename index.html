@@ -6,6 +6,7 @@
     <title>ATLAS - América del Norte</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -117,6 +118,30 @@
                 <a id="btn-google-maps" href="#" target="_blank" class="btn btn-outline-primary btn-sm mt-3 w-100">
                     Ver en Google Maps
                 </a>
+            </div>
+        </div>
+
+        <div class="row g-4 my-4">
+            <div class="col-md-6">
+                <div class="card border-0 shadow-sm h-100">
+                <div class="card-body d-flex flex-column align-items-center">
+                    <h5 class="card-title text-center mb-3">🎨 Paleta de la Bandera</h5>
+                    <div style="position: relative; width: 100%; max-width: 300px; margin: auto;">
+                    <canvas id="flagPieChart"></canvas>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-center mb-3">📈 Evolución Índice de Gini</h5>
+                    <div style="position: relative; width: 100%; height: 260px;">
+                    <canvas id="giniLineChart"></canvas>
+                    </div>
+                </div>
+                </div>
             </div>
         </div>
     </main>

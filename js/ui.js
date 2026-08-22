@@ -2,7 +2,9 @@ import {
     formatCompactNumber, 
     formatFullNumber, 
     densityCalculation,
-    renderCountryMap 
+    renderCountryMap, 
+    renderFlagPieChart, 
+    renderGiniLineChart
 } from './functions.js';
 
 function renderizarMenuPaises(paises, onPaisClick) {
@@ -52,6 +54,8 @@ function renderizarData(paisData) {
     }
 
     renderCountryMap(pais.capitals[0]?.coordinates?.lat, pais.capitals[0]?.coordinates?.lng, pais.capitals?.[0]?.name, pais.links?.google_maps);
+    renderFlagPieChart('flagPieChart', pais.flag.colors.palette);
+    renderGiniLineChart('giniLineChart', pais.economy.gini_coefficient);
 }
 
 export { renderizarMenuPaises, renderizarData };

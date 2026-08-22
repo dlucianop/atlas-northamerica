@@ -43,4 +43,112 @@ function renderCountryMap(lat, lng, countryName, mapsUrl){
         .openPopup();
 }
 
-export { formatCompactNumber, formatFullNumber, densityCalculation, renderCountryMap }
+let pieChartInstance = null;
+function renderFlagPieChart(canvasId, colorsPalette){
+    const canvasElement = document.getElementById(canvasId);
+    if (!canvasElement) {
+        console.warn(`No se encontró el canvas con ID: ${canvasId}`);
+        return;
+    }
+
+    const ctx = canvasElement.getContext('2d');
+    if (pieChartInstance) {
+        pieChartInstance.destroy();
+    }
+    //console.log(colorsPalette, typeof colorsPalette, Array.isArray(colorsPalette));
+    const labels = colorsPalette.map(item => item.hex);
+    const dataValues = colorsPalette.map(item => item.proportion);
+    const backgroundColors = colorsPalette.map(item => item.hex);
+
+    pieChartInstance = new Chart(ctx, {
+        type: 'pie',
+        data: {
+        labels: labels,
+        datasets: [{
+            data: dataValues,
+            backgroundColor: backgroundColors,
+            borderWidth: 2,
+            borderColor: '#ffffff'
+        }]
+        },
+        options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+            legend: {
+            position: 'bottom'
+            },
+            tooltip: {
+            callbacks: {
+                label: (context) => ` ${(context.raw * 100).toFixed(2)}%`
+            }
+            }
+        }
+        }
+    });
+}
+
+let lineChartInstance = null;
+function renderGiniLineChart(canvasId, giniData) {
+    const canvasElement = document.getElementById(canvasId);
+
+    if (!canvasElement) {
+        console.warn(`No se encontró el canvas con ID: ${canvasId}`);
+        return;
+    }
+
+    const ctx = canvasElement.getContext('2d');
+    if (lineChartInstance) {
+        lineChartInstance.destroy();
+    }
+
+    const years = Object.keys(giniData);
+    const values = Object.values(giniData);
+
+    lineChartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+        labels: years,
+        datasets: [{
+            label: 'Índice de Gini',
+            data: values,
+            borderColor: '#0d6efd',
+            backgroundColor: 'rgba(13, 110, 253, 0.12)',
+            borderWidth: 3,
+            pointRadius: 6,
+            pointBackgroundColor: '#0d6efd',
+            pointBorderColor: '#ffffff',
+            pointBorderWidth: 2,
+            pointHoverRadius: 8,
+            tension: 0.3,
+            fill: true
+        }]
+        },
+        options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            y: {
+            beginAtZero: false,
+            title: {
+                display: true,
+                text: 'Nivel de Desigualdad'
+            }
+            },
+            x: {
+            title: {
+                display: true,
+                text: 'Año'
+            }
+            }
+        },
+        plugins: {
+            legend: {
+            display: false
+            }
+        }
+        }
+    });
+}
+
+export { formatCompactNumber, formatFullNumber, densityCalculation, renderCountryMap, renderFlagPieChart, renderGiniLineChart }
