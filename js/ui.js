@@ -1,7 +1,8 @@
 import { 
     formatCompactNumber, 
     formatFullNumber, 
-    densityCalculation 
+    densityCalculation,
+    renderCountryMap 
 } from './functions.js';
 
 function renderizarMenuPaises(paises, onPaisClick) {
@@ -42,12 +43,15 @@ function renderizarData(paisData) {
         'monedaH': `${pais.currencies[0]?.code} (${pais.currencies[0]?.name})` ?? 'N/A',
         'medicionH': pais.units?.measurement_system ?? 'N/A',
         'temperaturaH': pais.units?.temperature_scale ?? 'N/A',
+        'coords-text': `Lat: ${pais.capitals[0]?.coordinates?.lat} | Lng: ${pais.capitals[0]?.coordinates?.lng}`?? `Lat: ** | Lng: **`,
     };
 
     for (const [id, valor] of Object.entries(campos)) {
         const el = document.getElementById(id);
         if (el) el.textContent = valor;
     }
+
+    renderCountryMap(pais.capitals[0]?.coordinates?.lat, pais.capitals[0]?.coordinates?.lng, pais.capitals?.[0]?.name, pais.links?.google_maps);
 }
 
 export { renderizarMenuPaises, renderizarData };

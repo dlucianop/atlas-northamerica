@@ -19,4 +19,28 @@ function densityCalculation(population, area){
     }
 }
 
-export { formatCompactNumber, formatFullNumber, densityCalculation }
+let mapInstance = null; 
+function renderCountryMap(lat, lng, countryName, mapsUrl){
+    if (!mapsUrl) return;
+
+    document.getElementById('btn-google-maps').href = mapsUrl;
+    if (mapInstance !== null) {
+        mapInstance.remove();
+    }
+
+    if (!lat) return;
+    if (!lng) return;
+    if (!countryName) return;
+
+    mapInstance = L.map('map').setView([lat, lng], 4);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap'
+    }).addTo(mapInstance);
+
+    L.marker([lat, lng])
+        .addTo(mapInstance)
+        .bindPopup(`<b>${countryName}</b>`)
+        .openPopup();
+}
+
+export { formatCompactNumber, formatFullNumber, densityCalculation, renderCountryMap }
