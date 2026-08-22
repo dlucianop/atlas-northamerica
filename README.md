@@ -41,7 +41,7 @@ The project focuses on the countries of the **North America** subregion, aiming 
 
 1. Clone this repository.
 2. Create an account on [RestCountries](https://restcountries.com/) and generate your own API key.
-3. Create a `config.js` file in the root of the project and paste your API key there. You can use the included `config.example.js` file as a guide for the expected format.
+3. Create a `config.js` file in the root of the project and paste your API token there. You can use the included `config.example.js` file as a guide for the expected format.
 4. Open the project in your browser (preferably with GoLive).
 5. Select a country from the top menu.
 6. Explore its general data, its location on the map, its flag color palette, and its Gini index evolution.
