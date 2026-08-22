@@ -29,17 +29,80 @@
     </nav>
 
     <main id="detalle-pais">+
-        <!--p class="fs-3 text-muted fst-italic" id="texto-desechable">Selecciona un país del menú para ver su información.</p-->
         <header class="text-center my-4">
             <div class="d-flex align-items-center justify-content-center gap-2">
                 <h1 class="display-3 fw-bold text-uppercase mb-0" id="nombre-pais">Nombre Comun</h1>
             </div>
             <p class="fs-5 text-muted fst-italic" id="nombre-oficial">Nombre Oficial</p>
             <div class="mt-2">
-                <!--span class="badge bg-secondary">Region: XXXXXX</span-->
                 <span class="badge bg-light text-dark border" id="capital">Capital: XXXXXXXX</span>
             </div>
         </header>
+
+        <div class="row g-3 my-4">
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm text-center h-100 bg-light">
+                <div class="card-body">
+                    <span class="fs-3">👥</span>
+                    <h6 class="text-muted text-uppercase small fw-bold mt-2">Población Total</h6>
+                    <h3 id="poblacionH" class="fw-bold text-primary mb-0">--</h3>
+                    <small id="poblacionS" class="text-muted fs-7">(-- habitantes)</small>
+                </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm text-center h-100 bg-light">
+                <div class="card-body">
+                    <span class="fs-3">🗺️</span>
+                    <h6 class="text-muted text-uppercase small fw-bold mt-2">Superficie</h6>
+                    <h3 id="areaH" class="fw-bold text-success mb-0">--</h3>
+                    <small id="areaS" class="text-muted fs-7">Kilómetros cuadrados</small>
+                </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm text-center h-100 bg-light">
+                <div class="card-body">
+                    <span class="fs-3">🏙️</span>
+                    <h6 class="text-muted text-uppercase small fw-bold mt-2">Densidad Poblacional</h6>
+                    <h3 id="densityH" class="fw-bold text-warning mb-0">--</h3>
+                    <small id="densityS" class="text-muted fs-7">hab. / km²</small>
+                </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm text-center h-100 bg-light">
+                <div class="card-body">
+                    <span class="fs-3">💲</span>
+                    <h6 class="text-muted text-uppercase small fw-bold mt-2">Moneda Nacional</h6>
+                    <h3 id="monedaH" class="fw-bold text-warning mb-0">--</h3>
+                </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm text-center h-100 bg-light">
+                <div class="card-body">
+                    <span class="fs-3">📏</span>
+                    <h6 class="text-muted text-uppercase small fw-bold mt-2">Sistema de medición</h6>
+                    <h3 id="medicionH" class="fw-bold text-primary mb-0">--</h3>
+                </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm text-center h-100 bg-light">
+                <div class="card-body">
+                    <span class="fs-3">🌡️</span>
+                    <h6 class="text-muted text-uppercase small fw-bold mt-2">Escala de temperatura</h6>
+                    <h3 id="temperaturaH" class="fw-bold text-success mb-0">--</h3>
+                </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <script type="module" src="./js/main.js"></script>

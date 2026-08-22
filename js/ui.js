@@ -1,3 +1,9 @@
+import { 
+    formatCompactNumber, 
+    formatFullNumber, 
+    densityCalculation 
+} from './functions.js';
+
 function renderizarMenuPaises(paises, onPaisClick) {
     const listaUl = document.getElementById('lista-paises');
     if (!listaUl) return;
@@ -14,7 +20,7 @@ function renderizarMenuPaises(paises, onPaisClick) {
         btn.className = 'btn-country btn btn-light nav-link';
         btn.textContent = nombreComun;
         btn.addEventListener('click', () => onPaisClick(pais));
-        
+
         li.appendChild(btn);
         listaUl.appendChild(li);
     });
@@ -28,6 +34,14 @@ function renderizarData(paisData) {
         'nombre-pais': pais.names?.translations?.spa?.common || 'Sin nombre',
         'nombre-oficial': pais.names?.translations?.spa?.official || 'Sin nombre oficial',
         'capital': 'Capital: ' + (pais.capitals?.[0]?.name ?? 'Sin capital'),
+        'poblacionH': formatCompactNumber(pais.population) ?? 0,
+        'poblacionS': `(${formatFullNumber(pais.population)} hab.)` ?? 0, 
+        'areaH': formatCompactNumber(pais.area?.kilometers) ?? 0,
+        'areaS': `${formatFullNumber(pais.area?.kilometers)} km²` ?? 0, 
+        'densityH': densityCalculation(pais.population, pais.area?.kilometers) ?? 0,
+        'monedaH': `${pais.currencies[0]?.code} (${pais.currencies[0]?.name})` ?? 'N/A',
+        'medicionH': pais.units?.measurement_system ?? 'N/A',
+        'temperaturaH': pais.units?.temperature_scale ?? 'N/A',
     };
 
     for (const [id, valor] of Object.entries(campos)) {
