@@ -1,6 +1,6 @@
 import { API_TOKEN } from './config.js';
 
-async function pedirPaises(url) {
+async function getData(url) {
     try {
         const response = await fetch(url, {
             headers: { 'Authorization': API_TOKEN }
@@ -8,8 +8,8 @@ async function pedirPaises(url) {
         const data = await response.json();
         return data.data.objects;
     } catch (error) {
-        console.error('Error al consultar la API:', error);
+        console.error('Error querying the API:', error);
     }
 }
 
-export { pedirPaises };
+export { getData };

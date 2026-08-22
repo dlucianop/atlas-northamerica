@@ -1,51 +1,51 @@
 # Atlas Northamerica 🌎
 
-Dashboard web interactivo para la visualización y análisis en tiempo real de datos demográficos y geográficos de los países de Norteamérica.
+Interactive web dashboard for real-time visualization and analysis of demographic and geographic data of North American countries.
 
-## 📋 Descripción
+## 📋 Description
 
-**Atlas Northamerica** es una aplicación de una sola página (*Single Page Application*) que permite consultar información detallada de los países que conforman la subregión de Norteamérica. Al seleccionar un país desde el menú superior, la aplicación realiza una nueva petición a la API para garantizar que los datos mostrados estén siempre actualizados, y renderiza dinámicamente toda la información en pantalla.
+**Atlas Northamerica** is a Single Page Application that lets you look up detailed information about the countries that make up the North America subregion. When a country is selected from the top menu, the application makes a new API request to guarantee that the data shown is always up to date, and dynamically renders all the information on screen.
 
-## ✨ Características
+## ✨ Features
 
-- **Menú de navegación** con el nombre de cada país de la subregión, ubicado en la parte superior de la página.
-- **Datos generales del país**:
-  - Nombre y nombre oficial
+- **Navigation menu** with the name of each country in the subregion, located at the top of the page.
+- **General country data**:
+  - Name and official name
   - Capital
-  - Población total (formato abreviado y formato completo)
-  - Superficie (formato abreviado y formato completo)
-  - Densidad poblacional (calculada a partir de la relación habitantes/km²)
-  - Moneda nacional
-  - Sistema de medición
-  - Escala de temperatura utilizada
-- **Mapa interactivo** que muestra la ubicación (latitud y longitud) de la capital del país seleccionado.
-- **Paleta de colores de la bandera**, representada en una gráfica de pastel.
-- **Evolución del índice de Gini**, representada en una gráfica de líneas.
-- **Descripción de la bandera** del país.
-- Actualización de datos en tiempo real: cada cambio de país dispara una nueva petición a la API.
+  - Total population (compact and full format)
+  - Area (compact and full format)
+  - Population density (calculated from the inhabitants/km² ratio)
+  - National currency
+  - Measurement system
+  - Temperature scale used
+- **Interactive map** showing the location (latitude and longitude) of the selected country's capital.
+- **Flag color palette**, represented in a pie chart.
+- **Gini index evolution**, represented in a line chart.
+- **Flag description** of the country.
+- Real-time data updates: every country change triggers a new API request.
 
-## 🛠️ Tecnologías utilizadas
+## 🛠️ Technologies used
 
-| Tecnología | Uso |
+| Technology | Purpose |
 |---|---|
-| [REST Countries API](https://restcountries.com/) | Obtención de datos demográficos y geográficos de los países |
-| [Bootstrap](https://getbootstrap.com/) | Estilos y diseño responsivo de la interfaz |
-| [Leaflet](https://leafletjs.com/) | Renderizado del mapa interactivo con la ubicación de las capitales |
-| [Chart.js](https://www.chartjs.org/) | Gráficas de pastel (paleta de bandera) y de líneas (evolución de Gini) |
+| [REST Countries API](https://restcountries.com/) | Fetching demographic and geographic data for the countries |
+| [Bootstrap](https://getbootstrap.com/) | Styling and responsive layout of the interface |
+| [Leaflet](https://leafletjs.com/) | Rendering the interactive map with capital locations |
+| [Chart.js](https://www.chartjs.org/) | Pie chart (flag palette) and line chart (Gini evolution) |
 
-## 🗺️ Alcance
+## 🗺️ Scope
 
-El proyecto se centra en los países de la subregión de **Norteamérica**, con el objetivo de mantener el alcance de datos simple, rápido y conciso.
+The project focuses on the countries of the **North America** subregion, aiming to keep the data scope simple, fast, and concise.
 
-## 🚀 Uso
+## 🚀 Usage
 
-1. Clona este repositorio.
-2. Crea una cuenta en [RestCountries](https://restcountries.com/) y genera tu propia API key.
-3. Crea un archivo `config.js` en la raíz del proyecto y pega ahí tu API key. Puedes guiarte con el archivo `config.example.js` incluido en el repositorio para ver el formato que debe tener.
-4. Abre el proyecto en tu navegador (con GoLive de preferencia).
-5. Selecciona un país desde el menú superior.
-6. Explora sus datos generales, su ubicación en el mapa, la paleta de colores de su bandera y la evolución de su índice de Gini.
+1. Clone this repository.
+2. Create an account on [RestCountries](https://restcountries.com/) and generate your own API key.
+3. Create a `config.js` file in the root of the project and paste your API key there. You can use the included `config.example.js` file as a guide for the expected format.
+4. Open the project in your browser (preferably with GoLive).
+5. Select a country from the top menu.
+6. Explore its general data, its location on the map, its flag color palette, and its Gini index evolution.
 
-## 📌 Notas
+## 📌 Notes
 
-Cada vez que se selecciona un país distinto, la aplicación realiza una nueva petición a la API en lugar de reutilizar datos previamente cargados, con el fin de asegurar que la información mostrada esté siempre actualizada.
+Every time a different country is selected, the application makes a new API request instead of reusing previously loaded data, in order to ensure the information shown is always up to date.

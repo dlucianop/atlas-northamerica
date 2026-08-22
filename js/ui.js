@@ -7,56 +7,57 @@ import {
     renderGiniLineChart
 } from './functions.js';
 
-function renderizarMenuPaises(paises, onPaisClick) {
-    const listaUl = document.getElementById('lista-paises');
-    if (!listaUl) return;
+function renderCountryMenu(countries, onCountryClick) {
+    const listUl = document.getElementById('countries-list');
+    if (!listUl) return;
 
-    listaUl.innerHTML = '';
+    listUl.innerHTML = '';
 
-    paises.forEach(function (pais) {
-        const nombreComun = pais.names.translations.spa.common;
+    countries.forEach(function (country) {
+        const commonName = country.names.common;
 
         const li = document.createElement('li');
         li.className = 'nav-item';
 
         const btn = document.createElement('button');
         btn.className = 'btn-country btn btn-light nav-link';
-        btn.textContent = nombreComun;
-        btn.addEventListener('click', () => onPaisClick(pais));
+        btn.textContent = commonName;
+        btn.addEventListener('click', () => onCountryClick(country));
 
         li.appendChild(btn);
-        listaUl.appendChild(li);
+        listUl.appendChild(li);
     });
 }
 
-function renderizarData(paisData) {
-    const pais = paisData[0];
-    if (!pais) return;
+function renderData(countryData) {
+    const country = countryData[0];
+    if (!country) return;
 
     const campos = {
-        'nombre-pais': pais.names?.translations?.spa?.common || 'Sin nombre',
-        'nombre-oficial': pais.names?.translations?.spa?.official || 'Sin nombre oficial',
-        'capital': 'Capital: ' + (pais.capitals?.[0]?.name ?? 'Sin capital'),
-        'poblacionH': formatCompactNumber(pais.population) ?? 0,
-        'poblacionS': `(${formatFullNumber(pais.population)} hab.)` ?? 0, 
-        'areaH': formatCompactNumber(pais.area?.kilometers) ?? 0,
-        'areaS': `${formatFullNumber(pais.area?.kilometers)} km²` ?? 0, 
-        'densityH': densityCalculation(pais.population, pais.area?.kilometers) ?? 0,
-        'monedaH': `${pais.currencies[0]?.code} (${pais.currencies[0]?.name})` ?? 'N/A',
-        'medicionH': pais.units?.measurement_system ?? 'N/A',
-        'temperaturaH': pais.units?.temperature_scale ?? 'N/A',
-        'coords-text': `Lat: ${pais.capitals[0]?.coordinates?.lat} | Lng: ${pais.capitals[0]?.coordinates?.lng}`?? `Lat: ** | Lng: **`,
-        'des-flag': pais.flag?.description ?? 'N/A',
+        'country-name': country.names?.common || 'N/A',
+        'official-name': country.names?.official || 'N/A',
+        'capital': 'Capital: ' + (country.capitals?.[0]?.name || 'N/A'),
+        'populationH': formatCompactNumber(country.population) || 0,
+        'populationS': `(${formatFullNumber(country.population)} inhabitants)` || 0, 
+        'areaH': formatCompactNumber(country.area?.kilometers) || 0,
+        'areaS': `${formatFullNumber(country.area?.kilometers)} kilometers` || 0, 
+        'density': densityCalculation(country.population, country.area?.kilometers) || 0,
+        'currency': `${country.currencies[0]?.code} (${country.currencies[0]?.name})` || 'N/A',
+        'measurement-system': country.units?.measurement_system || 'N/A',
+        'temperature-scale': country.units?.temperature_scale || 'N/A',
+        'coords-text': `Lat: ${country.capitals[0]?.coordinates?.lat} | Lng: ${country.capitals[0]?.coordinates?.lng}` || `Lat: ${0} | Lng: ${0}`,
+        'des-flag': country.flag?.description || 'N/A',
+        'btn-google-maps': `View ${country.names?.common} on Google Maps` || 'View on Google Maps',
     };
 
-    for (const [id, valor] of Object.entries(campos)) {
+    for (const [id, value] of Object.entries(campos)) {
         const el = document.getElementById(id);
-        if (el) el.textContent = valor;
+        if (el) el.textContent = value;
     }
 
-    renderCountryMap(pais.capitals[0]?.coordinates?.lat, pais.capitals[0]?.coordinates?.lng, pais.capitals?.[0]?.name, pais.links?.google_maps);
-    renderFlagPieChart('flagPieChart', pais.flag.colors.palette);
-    renderGiniLineChart('giniLineChart', pais.economy.gini_coefficient);
+    renderCountryMap(country.capitals[0]?.coordinates?.lat, country.capitals[0]?.coordinates?.lng, country.capitals?.[0]?.name, country.links?.google_maps);
+    renderFlagPieChart('flagPieChart', country.flag?.colors?.palette);
+    renderGiniLineChart('giniLineChart', country.economy?.gini_coefficient);
 }
 
-export { renderizarMenuPaises, renderizarData };
+export { renderCountryMenu, renderData };

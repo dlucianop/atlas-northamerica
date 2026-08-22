@@ -1,17 +1,17 @@
-import { pedirPaises } from './api.js';
-import { renderizarMenuPaises, renderizarData } from './ui.js';
+import { getData } from './api.js';
+import { renderCountryMenu, renderData } from './ui.js';
 
-async function cargarPaises() {
-    const urlBase = 'https://api.restcountries.com/countries/v5?subregion=North+America&response_fields=names.common,names.official,names.translations.spa.common';
-    const northamerica = await pedirPaises(urlBase);
-    renderizarMenuPaises(northamerica, cargarDataPais);
+async function loadCountries() {
+    const urlBase = 'https://api.restcountries.com/countries/v5?subregion=North+America&response_fields=names.common,names.official';
+    const northamerica = await getData(urlBase);
+    renderCountryMenu(northamerica, loadCountryData);
 }
 
-async function cargarDataPais(pais) {
-    const nombreIngles = pais.names.official;
-    const urlBase = `https://api.restcountries.com/countries/v5?names.official=${nombreIngles}&subregion=North+America`;
-    const paisData = await pedirPaises(urlBase);
-    renderizarData(paisData);
+async function loadCountryData(country) {
+    const englishName = country.names.official;
+    const urlBase = `https://api.restcountries.com/countries/v5?names.official=${englishName}&subregion=North+America`;
+    const countryData = await getData(urlBase);
+    renderData(countryData);
 }
 
-cargarPaises();
+loadCountries();

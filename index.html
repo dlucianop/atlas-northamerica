@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATLAS - América del Norte</title>
+    <title>ATLAS - North America</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
@@ -11,20 +11,20 @@
 </head>
 <body>
     <div class="text-center my-4">
-        <span class="tag">Geografía & Datos</span>
+        <span class="tag">Geography & Data</span>
         <h1>ATLAS</h1>
-        <h5 class="subtitle">de países y territorios pertenecientes a la subregión de América del Norte</h5>
+        <h5 class="subtitle">of countries and territories belonging to the North American subregion</h5>
     </div>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Países</a>
+            <a class="navbar-brand" href="#">Countries</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             
             <div class="navbar" id="navbarNav">
-                <ul class="navbar-nav" id="lista-paises">
+                <ul class="navbar-nav" id="countries-list">
                 </ul>
             </div>
         </div>
@@ -33,9 +33,9 @@
     <main id="detalle-pais">+
         <header class="text-center my-4">
             <div class="d-flex align-items-center justify-content-center gap-2">
-                <h1 class="display-3 fw-bold text-uppercase mb-0" id="nombre-pais">Nombre Comun</h1>
+                <h1 class="display-3 fw-bold text-uppercase mb-0" id="country-name">Common Name</h1>
             </div>
-            <p class="fs-5 text-muted fst-italic" id="nombre-oficial">Nombre Oficial</p>
+            <p class="fs-5 text-muted fst-italic" id="official-name">Official Name</p>
             <div class="mt-2">
                 <span class="badge bg-light text-dark border" id="capital">Capital: XXXXXXXX</span>
             </div>
@@ -46,9 +46,9 @@
                 <div class="card border-0 shadow-sm text-center h-100 bg-light">
                 <div class="card-body">
                     <span class="fs-3">👥</span>
-                    <h6 class="text-muted text-uppercase small fw-bold mt-2">Población Total</h6>
-                    <h3 id="poblacionH" class="fw-bold text-primary mb-0">--</h3>
-                    <small id="poblacionS" class="text-muted fs-7">(-- habitantes)</small>
+                    <h6 class="text-muted text-uppercase small fw-bold mt-2">Population</h6>
+                    <h3 id="populationH" class="fw-bold text-primary mb-0">--</h3>
+                    <small id="populationS" class="text-muted fs-7">(-- inhabitants)</small>
                 </div>
                 </div>
             </div>
@@ -57,9 +57,9 @@
                 <div class="card border-0 shadow-sm text-center h-100 bg-light">
                 <div class="card-body">
                     <span class="fs-3">🗺️</span>
-                    <h6 class="text-muted text-uppercase small fw-bold mt-2">Superficie</h6>
+                    <h6 class="text-muted text-uppercase small fw-bold mt-2">Area</h6>
                     <h3 id="areaH" class="fw-bold text-success mb-0">--</h3>
-                    <small id="areaS" class="text-muted fs-7">Kilómetros cuadrados</small>
+                    <small id="areaS" class="text-muted fs-7">Kilometers</small>
                 </div>
                 </div>
             </div>
@@ -68,9 +68,9 @@
                 <div class="card border-0 shadow-sm text-center h-100 bg-light">
                 <div class="card-body">
                     <span class="fs-3">🏙️</span>
-                    <h6 class="text-muted text-uppercase small fw-bold mt-2">Densidad Poblacional</h6>
-                    <h3 id="densityH" class="fw-bold text-warning mb-0">--</h3>
-                    <small id="densityS" class="text-muted fs-7">hab. / km²</small>
+                    <h6 class="text-muted text-uppercase small fw-bold mt-2">Population Density</h6>
+                    <h3 id="density" class="fw-bold text-warning mb-0">--</h3>
+                    <small class="text-muted fs-7">inhabitants / km²</small>
                 </div>
                 </div>
             </div>
@@ -79,8 +79,8 @@
                 <div class="card border-0 shadow-sm text-center h-100 bg-light">
                 <div class="card-body">
                     <span class="fs-3">💲</span>
-                    <h6 class="text-muted text-uppercase small fw-bold mt-2">Moneda Nacional</h6>
-                    <h3 id="monedaH" class="fw-bold text-warning mb-0">--</h3>
+                    <h6 class="text-muted text-uppercase small fw-bold mt-2">Currency</h6>
+                    <h3 id="currency" class="fw-bold text-warning mb-0">--</h3>
                 </div>
                 </div>
             </div>
@@ -89,8 +89,8 @@
                 <div class="card border-0 shadow-sm text-center h-100 bg-light">
                 <div class="card-body">
                     <span class="fs-3">📏</span>
-                    <h6 class="text-muted text-uppercase small fw-bold mt-2">Sistema de medición</h6>
-                    <h3 id="medicionH" class="fw-bold text-primary mb-0">--</h3>
+                    <h6 class="text-muted text-uppercase small fw-bold mt-2">Measurement System Unit</h6>
+                    <h3 id="measurement-system" class="fw-bold text-primary mb-0">--</h3>
                 </div>
                 </div>
             </div>
@@ -99,8 +99,8 @@
                 <div class="card border-0 shadow-sm text-center h-100 bg-light">
                 <div class="card-body">
                     <span class="fs-3">🌡️</span>
-                    <h6 class="text-muted text-uppercase small fw-bold mt-2">Escala de temperatura</h6>
-                    <h3 id="temperaturaH" class="fw-bold text-success mb-0">--</h3>
+                    <h6 class="text-muted text-uppercase small fw-bold mt-2">Temperature Scale Unit</h6>
+                    <h3 id="temperature-scale" class="fw-bold text-success mb-0">--</h3>
                 </div>
                 </div>
             </div>
@@ -109,14 +109,14 @@
         <div class="card shadow-sm my-4">
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h5 class="card-title m-0"> Ubicación Geográfica</h5>
+                    <h5 class="card-title m-0">Geographic Location</h5>
                     <span id="coords-text" class="badge bg-light text-dark border">
                         Lat: 00.00 | Lng: 00.00
                     </span>
                 </div>
                 <div id="map" style="height: 250px; border-radius: 8px;"></div>
                 <a id="btn-google-maps" href="#" target="_blank" class="btn btn-outline-primary btn-sm mt-3 w-100">
-                    Ver en Google Maps
+                    View on Google Maps
                 </a>
             </div>
         </div>
@@ -125,7 +125,7 @@
             <div class="col-md-6">
                 <div class="card border-0 shadow-sm h-100">
                 <div class="card-body d-flex flex-column align-items-center">
-                    <h5 class="card-title text-center mb-3">🎨 Paleta de la Bandera</h5>
+                    <h5 class="card-title text-center mb-3">🎨 Flag Palette</h5>
                     <div style="position: relative; width: 100%; max-width: 300px; margin: auto;">
                     <canvas id="flagPieChart"></canvas>
                     </div>
@@ -136,7 +136,7 @@
             <div class="col-md-6">
                 <div class="card border-0 shadow-sm h-100">
                 <div class="card-body">
-                    <h5 class="card-title text-center mb-3">📈 Evolución Índice de Gini</h5>
+                    <h5 class="card-title text-center mb-3">📈 Gini Coefficient Evolution</h5>
                     <div style="position: relative; width: 100%; height: 260px;">
                     <canvas id="giniLineChart"></canvas>
                     </div>
@@ -146,7 +146,7 @@
         </div>
 
         <div class="text-center my-4">
-            <h3>Descripcion de la bandera</h3>
+            <h3>Flag Description</h3>
             <p id="des-flag" class="fs-3 text-muted fst-italic">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad iusto mollitia sapiente repellat similique, doloribus veritatis adipisci assumenda aliquid distinctio exercitationem quod non fugiat voluptatibus sed atque magnam fuga quos!</p>
         </div>
     </main>

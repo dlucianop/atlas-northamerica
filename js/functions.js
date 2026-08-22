@@ -1,12 +1,12 @@
 function formatCompactNumber(number) {
-    return new Intl.NumberFormat('es-MX', {
+    return new Intl.NumberFormat('en-US', {
         notation: 'compact',
         maximumFractionDigits: 1
     }).format(number);
 }
 
 function formatFullNumber(number) {
-    return new Intl.NumberFormat('es-MX').format(number);
+    return new Intl.NumberFormat('en-US').format(number);
 }
 
 function densityCalculation(population, area){
@@ -26,6 +26,7 @@ function renderCountryMap(lat, lng, countryName, mapsUrl){
     document.getElementById('btn-google-maps').href = mapsUrl;
     if (mapInstance !== null) {
         mapInstance.remove();
+        mapInstance = null;
     }
 
     if (!lat) return;
@@ -47,7 +48,7 @@ let pieChartInstance = null;
 function renderFlagPieChart(canvasId, colorsPalette){
     const canvasElement = document.getElementById(canvasId);
     if (!canvasElement) {
-        console.warn(`No se encontró el canvas con ID: ${canvasId}`);
+        console.warn(`Canvas with ID ${canvasId} not found.`);
         return;
     }
 
@@ -92,7 +93,7 @@ function renderGiniLineChart(canvasId, giniData) {
     const canvasElement = document.getElementById(canvasId);
 
     if (!canvasElement) {
-        console.warn(`No se encontró el canvas con ID: ${canvasId}`);
+        console.warn(`Canvas with ID ${canvasId} not found.`);
         return;
     }
 
@@ -109,7 +110,7 @@ function renderGiniLineChart(canvasId, giniData) {
         data: {
         labels: years,
         datasets: [{
-            label: 'Índice de Gini',
+            label: 'Gini Coefficient',
             data: values,
             borderColor: '#0d6efd',
             backgroundColor: 'rgba(13, 110, 253, 0.12)',
@@ -131,13 +132,13 @@ function renderGiniLineChart(canvasId, giniData) {
             beginAtZero: false,
             title: {
                 display: true,
-                text: 'Nivel de Desigualdad'
+                text: 'Level of Inequality'
             }
             },
             x: {
             title: {
                 display: true,
-                text: 'Año'
+                text: 'Year'
             }
             }
         },
