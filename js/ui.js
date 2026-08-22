@@ -46,6 +46,7 @@ function renderizarData(paisData) {
         'medicionH': pais.units?.measurement_system ?? 'N/A',
         'temperaturaH': pais.units?.temperature_scale ?? 'N/A',
         'coords-text': `Lat: ${pais.capitals[0]?.coordinates?.lat} | Lng: ${pais.capitals[0]?.coordinates?.lng}`?? `Lat: ** | Lng: **`,
+        'des-flag': pais.flag?.description ?? 'N/A',
     };
 
     for (const [id, valor] of Object.entries(campos)) {

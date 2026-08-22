@@ -55,7 +55,6 @@ function renderFlagPieChart(canvasId, colorsPalette){
     if (pieChartInstance) {
         pieChartInstance.destroy();
     }
-    //console.log(colorsPalette, typeof colorsPalette, Array.isArray(colorsPalette));
     const labels = colorsPalette.map(item => item.hex);
     const dataValues = colorsPalette.map(item => item.proportion);
     const backgroundColors = colorsPalette.map(item => item.hex);
