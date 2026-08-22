@@ -1,0 +1,1 @@
+export const API_TOKEN = "TU_API_KEY_AQUI";

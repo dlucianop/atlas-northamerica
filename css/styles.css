@@ -1,0 +1,8 @@
+.btn-country{
+    margin: 0px 10px;
+}
+
+.btn-country:hover{
+    background-color: rgb(33 37 41);
+    color: whitesmoke;
+}
